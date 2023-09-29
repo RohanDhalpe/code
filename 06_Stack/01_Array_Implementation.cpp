@@ -5,12 +5,10 @@ using namespace std;
 class stack
 {
    public:
-   
    int size;
-   int *arr;
+   int *arr; 
    int top;
    
-  
     stack(int size)
     {
       this->size=size;
@@ -28,10 +26,9 @@ class stack
 
     void pop(){
         if(top==-1){
-            cout<<"Stack Underflow";
-            
+            cout<<"Stack Underflow";   
         }
-      top--;
+       top--;
     }
 
     int topElement(){

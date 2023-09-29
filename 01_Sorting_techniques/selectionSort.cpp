@@ -17,10 +17,8 @@ void SelectionSort(int arr[],int n){
 
 void printArray(int arr[], int size)
 {
-    int i;
-    for (i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
-        
     }
 }
 

@@ -1,43 +1,37 @@
-#include<iostream>
+#include <iostream>
 #include<vector>
 using namespace std;
 
-int partionIndex(vector<int> &arr,int low,int high)
-{    
-     int i=low;
-     int j=high;
-     int pIndex=arr[low];
+int partition(vector<int> &arr, int low, int high) {
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
 
-      while(i<j)
-      {
-          while(arr[i]<=pIndex && i<=high-1){
-               i++;
-          }
-          while(arr[j]>=pIndex && j>=low+1){
-               j--;
-          }
-          
-          if(i<j){
-               swap(arr[i],arr[j]);
-          }    
-      }
+    while (i < j) {
+        while (arr[i] <= pivot && i <= high - 1) {
+            i++;
+        }
 
-     swap(arr[low],arr[j]);
-     return j;
+        while (arr[j] > pivot && j >= low + 1) {
+            j--;
+        }
+        if (i < j) swap(arr[i], arr[j]);
+    }
+    swap(arr[low], arr[j]);
+    return j;
 }
 
-void qS(vector<int> &arr,int low,int high){
-     if(low<high)
-     {
-          int pivot=partionIndex(arr,low,high);
-          qS(arr,low,pivot-1);
-          qS(arr,pivot+1,high);
-     }    
+void qs(vector<int> &arr, int low, int high) {
+    if (low < high) {
+        int pIndex = partition(arr, low, high);
+        qs(arr, low, pIndex - 1);
+        qs(arr, pIndex + 1, high);
+    }
 }
 
-vector<int>quicksort(vector<int> &arr){
-     qS(arr,0,arr.size()-1);
-     return arr;
+vector<int> quickSort(vector<int> arr) {
+    qs(arr, 0, arr.size() - 1);
+    return arr;
 }
 
 int main()
@@ -51,7 +45,7 @@ int main()
     }
     cout << endl;
 
-    arr = quicksort(arr);
+    arr = quickSort(arr);
     cout << "After Using quick sort: " << "\n";
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";
