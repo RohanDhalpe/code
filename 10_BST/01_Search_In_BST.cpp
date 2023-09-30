@@ -1,6 +1,6 @@
 /*
 
-class Solution {
+class Solution{
 public:
     TreeNode* searchBST(TreeNode* root, int x) {
         while(root!=NULL && root->val!=x)
